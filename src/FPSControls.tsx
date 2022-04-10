@@ -5,8 +5,11 @@
  * - adjustment for fps
  */
 
+// @ts-ignore: peer-dep
 import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
+// @ts-ignore: peer-dep
 import { useFrame } from "@react-three/fiber";
+// @ts-ignore: peer-dep
 import React, { useCallback, useEffect, useRef } from "react";
 import { Vector3 } from "three";
 import nipplejs from "nipplejs";
@@ -128,6 +131,7 @@ function useJoystick({ enableJoystick }) {
 
   useEffect(() => {
     if (!joyManager && enableJoystick) {
+      // @ts-ignore
       joyManager = nipplejs.create(NIPPLEJS_OPTIONS);
       joyManager["0"].on("move", handleMove);
       joyManager["0"].on("end", handleEnd);
@@ -143,10 +147,10 @@ function useJoystick({ enableJoystick }) {
 }
 
 const FPSControls = ({
-  enableJoystick,
-  enableKeyboard,
-  orbitProps = {},
-  camProps = {},
+  enableJoystick = true,
+  enableKeyboard = true,
+  orbitProps = {} as any,
+  camProps = {} as any,
   mult = 0.1,
 }) => {
   const orbitRef = useRef();

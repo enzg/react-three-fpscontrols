@@ -1,12 +1,12 @@
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
-import { babel } from "@rollup/plugin-babel";
+import swc from "rollup-plugin-swc";
 
 const packageJson = require("./package.json");
 
 export default [
   {
-    input: "src/index.js",
+    input: "src/index.ts",
     output: [
       {
         file: packageJson.main,
@@ -20,11 +20,20 @@ export default [
       },
     ],
     plugins: [
-      resolve(),
-      babel({
-        babelHelpers: "bundled",
-        exclude: "node_modules/**",
-        presets: ["@babel/env", "@babel/preset-react"],
+      resolve({
+        extensions: [".js", ".ts", ".tsx"],
+      }),
+      swc({
+        rollup: {
+          exclude: "node_modules/**",
+        },
+        jsc: {
+          parser: {
+            syntax: "typescript",
+            tsx: true,
+          },
+          target: "es5",
+        },
       }),
       commonjs(),
     ],
