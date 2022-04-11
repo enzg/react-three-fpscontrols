@@ -1,5 +1,4 @@
 import resolve from "@rollup/plugin-node-resolve";
-import commonjs from "@rollup/plugin-commonjs";
 import swc from "rollup-plugin-swc";
 
 const packageJson = require("./package.json");
@@ -35,7 +34,6 @@ export default [
           target: "es5",
         },
       }),
-      commonjs(),
     ],
   },
 ];
