@@ -60,22 +60,22 @@ function useKeyboard({ enableKeyboard }) {
     switch (event.code) {
       case "ArrowUp":
       case "KeyW":
-        handleMove({}, { vector: { y: 1 } });
+        handleMove({}, { vector: { y: 3 } });
         break;
 
       case "ArrowLeft":
       case "KeyA":
-        handleMove({}, { vector: { x: -1 } });
+        handleMove({}, { vector: { x: -3 } });
         break;
 
       case "ArrowDown":
       case "KeyS":
-        handleMove({}, { vector: { y: -1 } });
+        handleMove({}, { vector: { y: -3 } });
         break;
 
       case "ArrowRight":
       case "KeyD":
-        handleMove({}, { vector: { x: 1 } });
+        handleMove({}, { vector: { x: 3 } });
         break;
       default:
         break;
